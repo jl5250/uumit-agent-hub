@@ -7,7 +7,8 @@ import { logger } from '../utils/logger.js';
  * 防止伪造请求
  */
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
-  const { callback_secret } = req.body;
+  // 从 body 或 header 中获取 callback_secret
+  const callback_secret = req.body.callback_secret || req.headers['callback-secret'] as string;
 
   if (!callback_secret) {
     logger.warn({ transaction_id: req.body.transaction_id }, 'Missing callback_secret');

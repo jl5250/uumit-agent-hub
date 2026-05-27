@@ -24,12 +24,14 @@ router.post(
   async (req: Request, res: Response) => {
     const start = performance.now();
 
+    logger.debug({ body: req.body, headers: req.headers }, 'Callback request received');
+
     const parsed = callbackSchema.safeParse(req.body);
     if (!parsed.success) {
-      logger.warn({ errors: parsed.error.flatten() }, 'Invalid callback request');
+      logger.warn({ errors: parsed.error.flatten(), body: req.body }, 'Invalid callback request');
       return res.status(400).json({
         success: false,
-        error: `Validation error: ${parsed.error.flatten().fieldErrors}`,
+        error: `Validation error: ${JSON.stringify(parsed.error.flatten().fieldErrors)}`,
       });
     }
 

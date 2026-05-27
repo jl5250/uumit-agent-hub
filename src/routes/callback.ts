@@ -30,7 +30,12 @@ router.post(
       'Callback completed',
     );
 
-    res.json(result);
+    // UUMit 响应校验要求字段在根层级，展开 result 到顶层
+    if (result.success && result.result) {
+      res.json({ success: true, ...result.result });
+    } else {
+      res.json(result);
+    }
   },
 );
 

@@ -32,6 +32,7 @@ router.post(
       return res.status(400).json({
         success: false,
         error: `Validation error: ${JSON.stringify(parsed.error.flatten().fieldErrors)}`,
+        received_body: req.body,
       });
     }
 

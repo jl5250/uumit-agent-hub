@@ -8,7 +8,13 @@ import { logger } from '../utils/logger.js';
  */
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
   // 从 body / header / query 中获取 callback_secret
-  const callback_secret = req.body.callback_secret || req.headers['callback-secret'] as string || req.query.callback_secret as string;
+  const callback_secret =
+    req.body.callback_secret ||
+    req.headers['callback-secret'] as string ||
+    req.headers['x-api-key'] as string ||
+    req.headers['api-key'] as string ||
+    req.headers.authorization?.replace(/^Bearer\s+/i, '') ||
+    req.query.callback_secret as string;
 
   if (!callback_secret) {
     logger.warn({ transaction_id: req.body.transaction_id, headers: req.headers }, 'Missing callback_secret');

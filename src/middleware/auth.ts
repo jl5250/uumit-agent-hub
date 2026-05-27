@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { config } from '../config';
-import { logger } from '../utils/logger';
+import { config } from '../config/index.js';
+import { logger } from '../utils/logger.js';
 
 /**
  * 校验 UUMit 回调请求中的 callback_secret

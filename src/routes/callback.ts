@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import { authMiddleware } from '../middleware/auth';
-import { idempotencyMiddleware } from '../middleware/idempotency';
-import { executeCapability } from '../capabilities/registry';
-import { logger } from '../utils/logger';
+import { authMiddleware } from '../middleware/auth.js';
+import { idempotencyMiddleware } from '../middleware/idempotency.js';
+import { executeCapability } from '../capabilities/registry.js';
+import { logger } from '../utils/logger.js';
 
 const router = Router();
 

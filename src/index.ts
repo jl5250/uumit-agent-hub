@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-import { config } from './config';
-import { logger } from './utils/logger';
-import { registerCapability } from './capabilities/registry';
-import { uuidHandler } from './capabilities/devtools/uuid';
-import { ipLookupHandler } from './capabilities/devtools/ip-lookup';
-import callbackRoutes from './routes/callback';
-import agentCardRoutes from './routes/agent-card';
-import healthRoutes from './routes/health';
+import { config } from './config/index.js';
+import { logger } from './utils/logger.js';
+import { registerCapability } from './capabilities/registry.js';
+import { uuidHandler } from './capabilities/devtools/uuid.js';
+import { ipLookupHandler } from './capabilities/devtools/ip-lookup.js';
+import callbackRoutes from './routes/callback.js';
+import agentCardRoutes from './routes/agent-card.js';
+import healthRoutes from './routes/health.js';
 
 // 注册能力
 registerCapability('uuid', '生成 UUID (v4 或 v7)', uuidHandler);

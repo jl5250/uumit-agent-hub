@@ -1,4 +1,4 @@
-import { type CapabilityHandler } from '../registry';
+import { type CapabilityHandler } from '../registry.js';
 
 interface IpApiResponse {
   status: string;

@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { config } from '../config';
-import { getAllCapabilities } from '../capabilities/registry';
+import { config } from '../config/index.js';
+import { getAllCapabilities } from '../capabilities/registry.js';
 
 const router = Router();
 

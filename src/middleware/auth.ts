@@ -7,14 +7,15 @@ import { logger } from '../utils/logger.js';
  * 防止伪造请求
  */
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
-  // 从 body 或 header 中获取 callback_secret
-  const callback_secret = req.body.callback_secret || req.headers['callback-secret'] as string;
+  // 从 body / header / query 中获取 callback_secret
+  const callback_secret = req.body.callback_secret || req.headers['callback-secret'] as string || req.query.callback_secret as string;
 
   if (!callback_secret) {
-    logger.warn({ transaction_id: req.body.transaction_id }, 'Missing callback_secret');
+    logger.warn({ transaction_id: req.body.transaction_id, headers: req.headers }, 'Missing callback_secret');
     return res.status(401).json({
       success: false,
       error: 'Missing callback_secret',
+      received_headers: Object.keys(req.headers).join(', '),
     });
   }
 

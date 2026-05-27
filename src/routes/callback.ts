@@ -14,7 +14,7 @@ router.post(
   idempotencyMiddleware,
   async (req: Request, res: Response) => {
     const start = performance.now();
-    const capabilityId = (req.headers['capability-id'] as string) || req.params.capabilityId || req.body.capability_id;
+    const capabilityId = (req.headers['capability-id'] as string) || req.query.capability_id as string || req.body.capability_id;
 
     if (!capabilityId) {
       logger.warn({ body: req.body, headers: req.headers }, 'Missing capability_id');

@@ -12,6 +12,10 @@ import { whoisHandler } from './capabilities/tools/whois.js';
 import { exchangeRateHandler } from './capabilities/tools/exchange-rate.js';
 import { weatherHandler } from './capabilities/tools/weather.js';
 import { contentHandler } from './capabilities/ai/content.js';
+import { dailyQuoteHandler } from './capabilities/ai/daily-quote.js';
+import { fortuneHandler } from './capabilities/ai/fortune.js';
+import { heartWarmingHandler } from './capabilities/ai/heart-warming.js';
+import { aiDailyHandler } from './capabilities/ai/ai-daily.js';
 import callbackRoutes from './routes/callback.js';
 import agentCardRoutes from './routes/agent-card.js';
 import healthRoutes from './routes/health.js';
@@ -32,6 +36,10 @@ registerCapability('weather', '查询城市实时天气与未来预报', weather
 
 // 注册 AI 能力
 registerCapability('content-creation', '使用 DeepSeek 生成文章/文案/创意内容', contentHandler);
+registerCapability('daily-quote', 'AI 每日格言金句生成（励志/爱情/治愈/哲理）', dailyQuoteHandler);
+registerCapability('fortune-teller', 'AI 占卜运势（星座/塔罗/解梦）', fortuneHandler);
+registerCapability('heart-warming', 'AI 暖心短篇故事创作', heartWarmingHandler);
+registerCapability('ai-daily', 'AI 每日资讯简报（聚合 RSS 并智能摘要）', aiDailyHandler);
 
 const app = express();
 

@@ -8,6 +8,9 @@ import { ipLookupHandler } from './capabilities/devtools/ip-lookup.js';
 import { jsonFormatHandler } from './capabilities/devtools/json-format.js';
 import { qrcodeHandler } from './capabilities/devtools/qrcode.js';
 import { hotNewsHandler } from './capabilities/tools/hot-news.js';
+import { whoisHandler } from './capabilities/tools/whois.js';
+import { exchangeRateHandler } from './capabilities/tools/exchange-rate.js';
+import { weatherHandler } from './capabilities/tools/weather.js';
 import { contentHandler } from './capabilities/ai/content.js';
 import callbackRoutes from './routes/callback.js';
 import agentCardRoutes from './routes/agent-card.js';
@@ -21,6 +24,11 @@ registerCapability('qrcode', '生成二维码 (支持 base64/svg/utf8 格式)', 
 
 // 注册热点资讯
 registerCapability('hot-news', '获取全网热点新闻资讯聚合', hotNewsHandler);
+
+// 注册数据查询
+registerCapability('whois', '查询域名 Whois 注册信息', whoisHandler);
+registerCapability('exchange-rate', '查询实时汇率转换', exchangeRateHandler);
+registerCapability('weather', '查询城市实时天气与未来预报', weatherHandler);
 
 // 注册 AI 能力
 registerCapability('content-creation', '使用 DeepSeek 生成文章/文案/创意内容', contentHandler);
